@@ -1,0 +1,39 @@
+### Create new account
+# curl -X POST --location "http://localhost:8080/accounts"
+#    -H "Content-Type: application/json"
+#    -d "{}"
+POST http://localhost:8080/accounts
+Content-Type: application/json
+
+{}
+
+
+### List all accounts
+# curl -X GET --location "http://localhost:8080/accounts"
+GET http://localhost:8080/accounts
+
+
+### Get account by id
+# curl -X GET --location "http://localhost:8080/accounts/{ACCOUNT_ID}"
+GET http://localhost:8080/accounts/{ACCOUNT_ID}
+
+
+### Create new transaction
+# curl -X POST --location "http://localhost:8080/accounts/{ACCOUNT_ID}/transactions"
+#    -H "Content-Type: application/json"
+#    -d "{
+#          \"id\": \"73f923b9-a3b0-45e6-8df5-b81d4624be89\",
+#          \"amount\": 150
+#        }"
+POST http://localhost:8080/accounts/{ACCOUNT_ID}/transactions
+Content-Type: application/json
+
+{
+  "id": "73f923b9-a3b0-45e6-8df5-b81d4624be89",
+  "amount": 150
+}
+
+
+### Get transactions for an account
+# curl -X GET --location "http://localhost:8080/accounts/{ACCOUNT_ID}/transactions"
+GET http://localhost:8080/accounts/{ACCOUNT_ID}/transactions

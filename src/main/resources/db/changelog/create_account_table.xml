@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="viktor.kostov">
+
+		<createTable tableName="account">
+			<column name="id" type="UUID">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="created" type="TIMESTAMP(6)" defaultValueComputed="now()">
+				<constraints nullable="false"/>
+			</column>
+			<column name="balance" type="numeric(17, 2)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+
+		<sql>
+			ALTER TABLE account ADD CONSTRAINT balance CHECK (balance &gt;= 0);
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>
